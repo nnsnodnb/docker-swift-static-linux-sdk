@@ -1,0 +1,27 @@
+name: Lint
+
+on: [pull_request]
+
+jobs:
+  actionlint:
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+    - name: Run actionlint
+      uses: reviewdog/action-actionlint@dbe5299849118fd6f099ba563d263d770955a64a  # v1.73.2
+      with:
+        github_token: ${{ secrets.github_token }}
+        reporter: github-pr-review
+        level: warning
+
+  hadolint:
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+    - name: run hadolint
+      uses: reviewdog/action-hadolint@2d0eb7c86a0ddd94eb625485f4cc2730e105edd8  # v1.53.0
+      with:
+        reporter: github-pr-review
+        level: warning
