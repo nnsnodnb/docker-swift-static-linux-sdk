@@ -56,7 +56,7 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          build-args:
+          build-args: |
             SWIFT_VERSION=${{ env.SWIFT_VERSION }}
             VARIANT=bookworm
             SDK_VERSION=${{ env.SDK_VERSION }}
@@ -69,7 +69,7 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          build-args:
+          build-args: |
             SWIFT_VERSION=${{ env.SWIFT_VERSION }}
             VARIANT=trixie
             SDK_VERSION=${{ env.SDK_VERSION }}
@@ -82,7 +82,7 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          build-args:
+          build-args: |
             SWIFT_VERSION=${{ env.SWIFT_VERSION }}
             VARIANT=noble
             SDK_VERSION=${{ env.SDK_VERSION }}
@@ -95,7 +95,7 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          build-args:
+          build-args: |
             SWIFT_VERSION=${{ env.SWIFT_VERSION }}
             VARIANT=jammy
             SDK_VERSION=${{ env.SDK_VERSION }}
@@ -108,7 +108,7 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          build-args:
+          build-args: |
             SWIFT_VERSION=${{ env.SWIFT_VERSION }}
             VARIANT=amazonlinux2023
             SDK_VERSION=${{ env.SDK_VERSION }}
@@ -121,7 +121,7 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          build-args:
+          build-args: |
             SWIFT_VERSION=${{ env.SWIFT_VERSION }}
             VARIANT=rhel-ubi9
             SDK_VERSION=${{ env.SDK_VERSION }}
@@ -134,9 +134,9 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          build-args:
+          build-args: |
             SWIFT_VERSION=${{ env.SWIFT_VERSION }}
-            VARIANT=rhel-rhel-ubi10
+            VARIANT=rhel-ubi10
             SDK_VERSION=${{ env.SDK_VERSION }}
           platforms: linux/amd64,linux/arm64
           push: true
