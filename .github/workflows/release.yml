@@ -7,14 +7,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
 
     permissions:
       contents: read
       packages: write
 
     env:
-      SWIFT_VERSION: '6.4.0'
+      SWIFT_VERSION: '6.4.1'
       SDK_VERSION: '0.1.0'
 
     steps:
