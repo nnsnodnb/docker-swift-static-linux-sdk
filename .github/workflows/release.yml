@@ -37,7 +37,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push to ghcr.io (resolute)
-        uses: docker/build-push-action@v7.3.0
+        uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: Dockerfile
@@ -52,7 +52,7 @@ jobs:
             ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}
             ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}-resolute
       - name: Build and push to ghcr.io (bookworm)
-        uses: docker/build-push-action@v7.3.0
+        uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: Dockerfile
@@ -65,7 +65,7 @@ jobs:
           tags: |
             ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}-bookworm
       - name: Build and push to ghcr.io (trixie)
-        uses: docker/build-push-action@v7.3.0
+        uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: Dockerfile
@@ -78,7 +78,7 @@ jobs:
           tags: |
             ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}-trixie
       - name: Build and push to ghcr.io (noble)
-        uses: docker/build-push-action@v7.3.0
+        uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: Dockerfile
@@ -91,7 +91,7 @@ jobs:
           tags: |
             ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}-noble
       - name: Build and push to ghcr.io (jammy)
-        uses: docker/build-push-action@v7.3.0
+        uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: Dockerfile
@@ -104,7 +104,7 @@ jobs:
           tags: |
             ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}-jammy
       - name: Build and push to ghcr.io (amazonlinux2023)
-        uses: docker/build-push-action@v7.3.0
+        uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: Dockerfile
@@ -117,7 +117,7 @@ jobs:
           tags: |
             ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}-amazonlinux2023
       - name: Build and push to ghcr.io (rhel-ubi9)
-        uses: docker/build-push-action@v7.3.0
+        uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: Dockerfile
@@ -130,7 +130,7 @@ jobs:
           tags: |
             ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}-rhel-ubi9
       - name: Build and push to ghcr.io (rhel-ubi10)
-        uses: docker/build-push-action@v7.3.0
+        uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: Dockerfile
