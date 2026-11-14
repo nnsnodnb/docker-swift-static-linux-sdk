@@ -14,7 +14,6 @@ jobs:
       packages: write
 
     env:
-      SWIFT_VERSION: '6.4.1'
       SDK_VERSION: '0.1.0'
 
     steps:
@@ -24,9 +23,9 @@ jobs:
         uses: docker/setup-qemu-action@v4.4.0
       - name: Setup QEMU Buildx
         uses: docker/setup-buildx-action@v4.4.1
-      - name: Get the tag name
-        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> "${GITHUB_ENV}"
       - name: Download Swift Static Linux SDK
+        env:
+          SWIFT_VERSION: ${{ github.ref_name }}
         run: |
           curl -fsSL -o "swift-${SWIFT_VERSION}-RELEASE_static-linux-${SDK_VERSION}.artifactbundle.tar.gz" \
             "https://download.swift.org/swift-${SWIFT_VERSION}-release/static-sdk/swift-${SWIFT_VERSION}-RELEASE/swift-${SWIFT_VERSION}-RELEASE_static-linux-${SDK_VERSION}.artifactbundle.tar.gz"
@@ -42,103 +41,103 @@ jobs:
           context: .
           file: Dockerfile
           build-args: |
-            SWIFT_VERSION=${{ env.SWIFT_VERSION }}
+            SWIFT_VERSION=${{ github.ref_name }}
             VARIANT=resolute
             SDK_VERSION=${{ env.SDK_VERSION }}
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
             ghcr.io/nnsnodnb/swift-static-linux-sdk:latest
-            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}
-            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}-resolute
+            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ github.ref_name }}
+            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ github.ref_name }}-resolute
       - name: Build and push to ghcr.io (bookworm)
         uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: Dockerfile
           build-args: |
-            SWIFT_VERSION=${{ env.SWIFT_VERSION }}
+            SWIFT_VERSION=${{ github.ref_name }}
             VARIANT=bookworm
             SDK_VERSION=${{ env.SDK_VERSION }}
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}-bookworm
+            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ github.ref_name }}-bookworm
       - name: Build and push to ghcr.io (trixie)
         uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: Dockerfile
           build-args: |
-            SWIFT_VERSION=${{ env.SWIFT_VERSION }}
+            SWIFT_VERSION=${{ github.ref_name }}
             VARIANT=trixie
             SDK_VERSION=${{ env.SDK_VERSION }}
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}-trixie
+            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ github.ref_name }}-trixie
       - name: Build and push to ghcr.io (noble)
         uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: Dockerfile
           build-args: |
-            SWIFT_VERSION=${{ env.SWIFT_VERSION }}
+            SWIFT_VERSION=${{ github.ref_name }}
             VARIANT=noble
             SDK_VERSION=${{ env.SDK_VERSION }}
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}-noble
+            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ github.ref_name }}-noble
       - name: Build and push to ghcr.io (jammy)
         uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: Dockerfile
           build-args: |
-            SWIFT_VERSION=${{ env.SWIFT_VERSION }}
+            SWIFT_VERSION=${{ github.ref_name }}
             VARIANT=jammy
             SDK_VERSION=${{ env.SDK_VERSION }}
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}-jammy
+            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ github.ref_name }}-jammy
       - name: Build and push to ghcr.io (amazonlinux2023)
         uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: Dockerfile
           build-args: |
-            SWIFT_VERSION=${{ env.SWIFT_VERSION }}
+            SWIFT_VERSION=${{ github.ref_name }}
             VARIANT=amazonlinux2023
             SDK_VERSION=${{ env.SDK_VERSION }}
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}-amazonlinux2023
+            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ github.ref_name }}-amazonlinux2023
       - name: Build and push to ghcr.io (rhel-ubi9)
         uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: Dockerfile
           build-args: |
-            SWIFT_VERSION=${{ env.SWIFT_VERSION }}
+            SWIFT_VERSION=${{ github.ref_name }}
             VARIANT=rhel-ubi9
             SDK_VERSION=${{ env.SDK_VERSION }}
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}-rhel-ubi9
+            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ github.ref_name }}-rhel-ubi9
       - name: Build and push to ghcr.io (rhel-ubi10)
         uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: Dockerfile
           build-args: |
-            SWIFT_VERSION=${{ env.SWIFT_VERSION }}
+            SWIFT_VERSION=${{ github.ref_name }}
             VARIANT=rhel-ubi10
             SDK_VERSION=${{ env.SDK_VERSION }}
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ env.TAG_NAME }}-rhel-ubi10
+            ghcr.io/nnsnodnb/swift-static-linux-sdk:${{ github.ref_name }}-rhel-ubi10
